@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-content>
+    <div class="dialog">
+      <div><b>{{user.name}}</b></div>
+      <div>{{user.phone}}</div>
+      <div>{{user.website}}</div>
+      <div>{{user.email}}</div>
+      <div><button mat-flat-button color="primary" type="button" (click)="onEdit(user)">Редактировать</button></div>
+      <div><button mat-flat-button color="primary" type="button" (click)="onDelete(user)">Удалить</button></div>
+    </div>
+  </mat-card-content>
+</mat-card>

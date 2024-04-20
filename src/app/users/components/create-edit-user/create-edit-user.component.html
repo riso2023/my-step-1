@@ -1,0 +1,41 @@
+<button mat-icon-button matDialogClose class="closeIcon">
+  <mat-icon>close</mat-icon>
+</button>
+
+<form class="form" [formGroup]="dialogForm">
+  <h2>{{ data.isEdit ? "Изменить" : "Создать"}}</h2>
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input matInput formControlName="name">
+    <div *ngIf="dialogForm.get('name')?.invalid && dialogForm.get('name')?.touched">Please enter name</div>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Телефон</mat-label>
+    <input matInput formControlName="phone">
+    <div *ngIf="dialogForm.get('phone')?.invalid && dialogForm.get('phone')?.touched">Please enter phone</div>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Сайт</mat-label>
+    <input matInput formControlName="website">
+    <div *ngIf="dialogForm.get('website')?.invalid && dialogForm.get('website')?.touched">Please enter site</div>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+  <div
+    *ngIf="dialogForm.controls['email'].invalid &&
+    (dialogForm.controls['email'].dirty || dialogForm.controls['email'].touched)
+"
+    style="background-color: red">
+    <div *ngIf="dialogForm.controls['email'].hasError('required')">
+      Email is required
+    </div>
+    <div *ngIf="dialogForm.controls['email'].hasError('email')">
+      Please enter a valid email
+    </div>
+  </div>
+  <button [disabled]="dialogForm.invalid" mat-raised-button matDialogClose (click)="onClick()">
+    {{ data.isEdit ? "Сохранить" : "Создать" }}
+  </button>
+</form>

@@ -1,0 +1,7 @@
+<p>Пользователи</p>
+<button mat-flat-button color="accent" (click)="openDialog()">Добавить пользователя</button>
+<app-user-card
+  [user]="user"
+  (deleteUser)="onDelete(user)"
+  *ngFor="let user of userService.users$ | async"
+></app-user-card>
